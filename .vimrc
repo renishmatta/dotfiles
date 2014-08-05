@@ -18,3 +18,5 @@ set ruler           "Show the line and column number of the cursor position,
 
 set showmatch       "Shows the matching bracket that is on the cursor
 
+set cryptmethod=blowfish "Uses a better encryptino method than the default
+

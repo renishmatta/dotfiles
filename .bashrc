@@ -5,8 +5,16 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-# User specific aliases and functions
-
 # Displays a fortune in cowsay using a random cow
+# $HOME/randomcow
 
-$HOME/randomcow
+# Change the PS1
+if [ $(id -u) -eq 0 ];
+then
+    export PS1="[[\@]:\u@\h \w]# "
+else
+    export PS1="[[\@]:\u@\h \w]$ "
+fi
+
+#run razor mouse configurations:
+$HOME/.mouse-options

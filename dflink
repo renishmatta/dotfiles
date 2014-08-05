@@ -1,2 +1,2 @@
-ln -s ~/.vimrc ~/dotfiles/.vimrc
-ln -s ~/.bashrc ~/dotfiles/.bashrc
+ln -s ~/dotfiles/.vimrc ~/.vimrc
+ln -s ~/dotfiles/.bashrc ~/.bashrc

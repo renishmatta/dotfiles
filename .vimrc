@@ -18,5 +18,13 @@ set ruler           "Show the line and column number of the cursor position,
 
 set showmatch       "Shows the matching bracket that is on the cursor
 
-set cryptmethod=blowfish "Uses a better encryptino method than the default
+set cryptmethod=blowfish "Uses a better encryption method than the default
 
+
+"set colorcolumn=80 "Creates a bar at column 80: makes code look neat
+
+"Creates crosshaird to trac the cursor
+hi CursorLine   cterm=NONE ctermbg=8 
+hi CursorColumn cterm=NONE ctermbg=8
+set cursorline!
+set cursorcolumn!

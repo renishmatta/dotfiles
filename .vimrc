@@ -28,3 +28,6 @@ hi CursorLine   cterm=NONE ctermbg=8
 hi CursorColumn cterm=NONE ctermbg=8
 set cursorline!
 set cursorcolumn!
+
+"In the Rutgers_Mobile Directory, the tabstop and shiftwidth tab are one less
+autocmd BufRead,BufNewFile /heroes/u1/rm934/Projects/Rutgers_Mobile/server* setlocal tabstop=3 shiftwidth=3

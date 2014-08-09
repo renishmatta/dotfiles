@@ -3,6 +3,8 @@ set nocompatible    "Need to set nocompatible for the cool tricks in vim to work
 set showcmd         "Shows what you are typing out as a command
 syntax on           "Allows for syntax highlighting
 
+colorscheme desert  "Set color scheme
+
 "Tab settings:
 set tabstop=4       "Changes number of spaces used for tabbing
 set shiftwidth=4    "Changes number of spaces used for indentation

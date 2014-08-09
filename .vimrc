@@ -21,11 +21,11 @@ set showmatch       "Shows the matching bracket that is on the cursor
 
 set cryptmethod=blowfish "Uses a better encryption method than the default
 
-
-"set colorcolumn=80 "Creates a bar at column 80: makes code look neat
+hi ColorColumn  cterm=NONE ctermbg=8
+set colorcolumn=80 "Creates a bar at column 80: makes code look neat
 
 "Creates crosshaird to trac the cursor
-hi CursorLine   cterm=NONE ctermbg=8 
+hi CursorLine   cterm=NONE ctermbg=8
 hi CursorColumn cterm=NONE ctermbg=8
 set cursorline!
 set cursorcolumn!

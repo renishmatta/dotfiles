@@ -17,9 +17,9 @@ alias ls='ls --color=auto'
 # Change the PS1
 if [ $(id -u) -eq 0 ];
 then
-    export PS1="[[\@]:\u@\h \w]# "
+    export PS1='\[\e[0;32m\][\[\e[m\][\@]:\[\e[0;31m\]\u\[\e[m\]@\h \[\e[1;34m\]\w\[\e[m\]\[\e[0;32m\]]\[\e[m\]\$ \[\e[0;31m\]'
 else
-    export PS1="[[\@]:\u@\h \w]$ "
+    export PS1='\[\e[0;32m\][\[\e[m\][\@]:\u@\h \[\e[1;34m\]\w\[\e[m\]\[\e[0;32m\]]\[\e[m\]\$ '
 fi
 
 #run razor mouse configurations:

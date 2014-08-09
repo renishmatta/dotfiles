@@ -15,12 +15,7 @@ alias ls='ls --color=auto'
 # $HOME/randomcow
 
 # Change the PS1
-if [ $(id -u) -eq 0 ];
-then
-    export PS1='\[\e[0;32m\][\[\e[m\][\@]:\[\e[0;31m\]\u\[\e[m\]@\h \[\e[1;34m\]\w\[\e[m\]\[\e[0;32m\]]\[\e[m\]\$ \[\e[0;31m\]'
-else
-    export PS1='\[\e[0;32m\][\[\e[m\][\@]:\u@\h \[\e[1;34m\]\w\[\e[m\]\[\e[0;32m\]]\[\e[m\]\$ '
-fi
+export PS1='[[\@]:\u@\h \w]\$ '
 
 #run razor mouse configurations:
 $HOME/.mouse-options

@@ -19,3 +19,6 @@ export PS1='[[\@]:\u@\h \w]\$ '
 
 #run razor mouse configurations:
 $HOME/.mouse-options
+
+#cd ../
+alias up='cd ../'

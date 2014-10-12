@@ -3,7 +3,8 @@ set nocompatible    "Need to set nocompatible for the cool tricks in vim to work
 set showcmd         "Shows what you are typing out as a command
 syntax on           "Allows for syntax highlighting
 
-"colorscheme desert  "Set color scheme
+colorscheme default  "Set color scheme
+"hi Normal ctermfg=252 ctermbg=NONE
 
 "Tab settings:
 set tabstop=4       "Changes number of spaces used for tabbing
@@ -35,6 +36,10 @@ set cursorcolumn!
 "set vpslit and split to the correct sides
 set splitright
 set splitbelow
+
+"Set highlighting full search term on + change highlighting color to light blue
+set hlsearch
+hi Search guibg=LightBlue
 
 "In the Rutgers_Mobile Directory, the tabstop and shiftwidth tab are one less
 autocmd BufRead,BufNewFile /heroes/u1/rm934/Projects/Rutgers_Mobile/server* setlocal tabstop=3 shiftwidth=3

@@ -1,6 +1,8 @@
 # .bashrc
 
 # Source global definitions
+export TERM="xterm-256color"
+
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
@@ -22,3 +24,13 @@ $HOME/.mouse-options
 
 #cd ../
 alias up='cd ../'
+
+#setup external monitor
+#xrandr -q | grep "VGA1 connected" > /dev/null
+#if [$? -eq 0]; then
+    xrandr --output LVDS1 --mode 1366x768
+    xrandr --output VGA1 --mode 1280x1024 --right-of LVDS1
+    #tmux new -s home
+#fi
+
+mesg y

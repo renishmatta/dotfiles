@@ -17,7 +17,7 @@ alias ls='ls --color=auto'
 # $HOME/randomcow
 
 # Change the PS1
-export PS1='[[\@]:\u@\h \w]\$ '
+export PS1='[\u@\h \w]\n\$ '
 
 #run razor mouse configurations:
 $HOME/.mouse-options
@@ -34,3 +34,14 @@ alias up='cd ../'
 #fi
 
 mesg y
+
+#Make it so that we can use ctrl+s in vim
+# No ttyctl, so we need to save and then restore terminal settings
+vim()
+{
+    # osx users, use stty -g
+    local STTYOPTS="$(stty --save)"
+    stty stop '' -ixoff
+    command vim "$@"
+    stty "$STTYOPTS"
+}

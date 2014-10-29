@@ -14,7 +14,6 @@ set ruler           "Show the line and column number of the cursor position,
                     "separated by a comma.
 set showmatch       "Shows the matching bracket that is on the cursor
 set cryptmethod=blowfish "Uses a better encryption method than the default
-
 "Tab Settings
 set tabstop=4       "Changes number of spaces used for tabbing
 set shiftwidth=4    "Changes number of spaces used for indentation
@@ -36,7 +35,6 @@ call matchadd('ColorColumn', '\%81v', 100)
 "Evil colorcolumn setting:
 ""hi ColorColumn ctermbg=red ctermfg=blue
 ""exec 'set colorcolumn=' . join(range(2,80,3), ',')
-
 "Column Settings
 "Creates crosshaird to trac the cursor
 hi CursorLine   cterm=NONE ctermbg=8
@@ -46,25 +44,21 @@ set cursorcolumn!
 "set vpslit and split to the correct sides
 set splitright
 set splitbelow
-
 "Backup Settings
 set noswapfile      "NO MORE SWAP FILES!! BWHAHAHA
 set backup          "Setup backup 
 "backup locations: make sure they exist!
 set backupdir=~/.vim/backup//
 set directory=~/.vim/tmp//
-
 "Map Settings
 "Map ctrl+s to save document
 noremap <C-S> :update<CR>
 vnoremap <C-S> <C-C>:update<CR>
 inoremap <C-S> <C-O>:update<CR>
-
 "Spell Check Settings
 autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
 autocmd BufRead,BufNewFile *.txt setlocal spell spelllang=en_us
 autocmd BufRead,BufNewFile *.pdf setlocal spell spelllang=en_us
-
 "View Settings
 "save view + load view automatically
 set viewoptions-=options
@@ -79,7 +73,6 @@ augroup vimrc
     \|  endif
 augroup END
 
-
 "Vundle Settings
 "set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -90,6 +83,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
+Plugin 'Lokaltog/powerline-fonts'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'Shougo/neocomplete.vim'
@@ -97,7 +91,6 @@ Plugin 'Shougo/neosnippet'
 Plugin 'Shougo/neosnippet-snippets'
 call vundle#end()
 filetype plugin indent on
-
 "NeoComplete Settings
 "Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
@@ -151,24 +144,19 @@ endif
 hi Pmenu ctermbg=8
 hi PmenuSel ctermbg=1
 hi PmenuSbar ctermbg=0
-
 "Vim-airline Settings
 let g:airline_inactive_collapse=1
 set laststatus=2
-
 "NERDTree Settings
 let g:NERDTreeDirArrows=0
 map <C-t> :NERDTreeToggle<CR>
-
 "Tagbar Settings
 map <C-b> :TagbarToggle<CR>
-
 "Ctrlp Settings
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
-
 "Neosnippet Settings
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -184,4 +172,3 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
-

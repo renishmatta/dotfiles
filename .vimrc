@@ -84,6 +84,8 @@ Plugin 'majutsushi/tagbar'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/powerline-fonts'
+Plugin 'ervandew/eclim'
+Plugin 'Rip-Rip/clang_complete'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'Shougo/neocomplete.vim'
@@ -137,9 +139,34 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
+"Neocomplete sources
+if !exists('g:neocomplete#sources#omni#functions')
+    let g:neocomplete#sources#omni#functions = {}
 endif
+if !exists('g:neocomplete#sources#omni#input_patterns')
+    let g:neocomplete#sources#omni#input_patterns = {}
+endif
+if !exists('g:neocomplete#force_omni_input_patterns')
+    let g:neocomplete#force_omni_input_patterns = {}
+endif
+" Java
+let g:EclimCompletionMethod = 'omnifunc'
+let g:neocomplete#force_omni_input_patterns.java =
+\ '\%(\h\w*\|)\)\.\w*'
+let g:EclimLoggingDisabled = 1
+let g:EclimTempFilesEnable = 0
+nnoremap <silent> <leader>o :JavaImportOrganize<cr>
+" C & C++
+let g:neocomplete#force_omni_input_patterns.c =
+\ '[^.[:digit:] *\t]\%(\.\|->\)\w*'
+let g:neocomplete#force_omni_input_patterns.cpp =
+\ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+let g:neocomplete#force_omni_input_patterns.objc =
+\ '\[\h\w*\s\h\?\|\h\w*\%(\.\|->\)'
+let g:neocomplete#force_omni_input_patterns.objcpp =
+\ '\[\h\w*\s\h\?\|\h\w*\%(\.\|->\)\|\h\w*::\w*'
+let g:clang_complete_auto = 0
+let g:clang_auto_select = 0
 "Change background
 hi Pmenu ctermbg=8
 hi PmenuSel ctermbg=1

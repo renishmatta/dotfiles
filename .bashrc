@@ -24,6 +24,12 @@ $HOME/.mouse-options
 
 #cd ../
 alias up='cd ../'
+alias testdir='cd /home/rematta/Projects/Personal/Tests'
+alias comparc='cd /home/rematta/Projects/College/CS211'
+alias sysprog='cd /home/rematta/Projects/College/CS214'
+alias word='/usr/share/playonlinux/playonlinux --run "Microsoft Word 2007"'
+alias excel='/usr/share/playonlinux/playonlinux --run "Microsoft Excel 2007"'
+alias powerpoint='/usr/share/playonlinux/playonlinux --run "Microsoft Powerpoint 2007"'
 
 #setup external monitor
 #xrandr -q | grep "VGA1 connected" > /dev/null

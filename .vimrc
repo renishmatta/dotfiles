@@ -91,11 +91,15 @@ Plugin 'ervandew/eclim'
 Plugin 'Rip-Rip/clang_complete'
 "Plugin 'SirVer/ultisnips'
 "Plugin 'Raimondi/delimitMate'
+"Plugin 'ujihisa/neco-look'  "autocomplete english words
+Plugin 'osyo-manga/vim-marching'
+Plugin 'mbbill/undotree'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/neosnippet'
 Plugin 'Shougo/neosnippet-snippets'
+Plugin 'Shougo/vimproc.vim'
 call vundle#end()
 filetype plugin indent on
 "NeoComplete Settings
@@ -179,7 +183,10 @@ hi Pmenu ctermbg=8
 hi PmenuSel ctermbg=1
 hi PmenuSbar ctermbg=0
 "Vim-airline Settings
-let g:airline_inactive_collapse=1
+let g:airline_inactive_collapse = 1
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1    "display current buffers
+let g:airline_theme = "murmur"
 set laststatus=2
 "NERDTree Settings
 let g:NERDTreeDirArrows=0
@@ -206,3 +213,5 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
+"Vim-Marching Settings
+let g:marching_enable_neocomplete = 1

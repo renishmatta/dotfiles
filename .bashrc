@@ -1,5 +1,6 @@
 # .bashrc
 
+HOSTNAME=$(hostname)
 # Source global definitions
 export TERM="xterm-256color"
 
@@ -25,6 +26,8 @@ export PS1='[\u@\h \w]\n\$ '
 
 #cd ../
 alias up='cd ../'
+
+if [ "${HOSTNAME:0:6}" == "atuin" ]; then
 alias testdir='cd /home/rematta/Projects/Personal/Tests'
 alias comparc='cd /home/rematta/Projects/College/CS211'
 alias sysprog='cd /home/rematta/Projects/College/CS214'
@@ -39,6 +42,7 @@ alias powerpoint='/usr/share/playonlinux/playonlinux --run "Microsoft Powerpoint
     xrandr --output VGA1 --mode 1280x1024 --right-of LVDS1
     #tmux new -s home
 #fi
+fi
 
 mesg y
 

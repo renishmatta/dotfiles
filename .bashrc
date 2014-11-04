@@ -20,7 +20,8 @@ alias ls='ls --color=auto'
 export PS1='[\u@\h \w]\n\$ '
 
 #run razor mouse configurations:
-$HOME/.mouse-options
+#$HOME/.mouse-options
+#currently using razercfg
 
 #cd ../
 alias up='cd ../'

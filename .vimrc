@@ -9,7 +9,7 @@ colorscheme ir_black  "Set color scheme
 "hi Normal ctermfg=252 ctermbg=NONE
 "Set highlighting full search term on + change highlighting color to light blue
 set hlsearch
-"hi Search guibg=LightBlue 
+hi Search cterm=NONE ctermfg=grey ctermbg=blue
 set ruler           "Show the line and column number of the cursor position,
                     "separated by a comma.
 set showmatch       "Shows the matching bracket that is on the cursor
@@ -19,6 +19,7 @@ set tabstop=4       "Changes number of spaces used for tabbing
 set shiftwidth=4    "Changes number of spaces used for indentation
 set expandtab       "Uses space characters when indenting"
 set autoindent      "Indents next line similarily as the current one"
+set smarttab        "Deletes # of spaces for a tab when using backspace 
 set smartindent     "Automatically inserts one extra level of indentation"
 set showcmd         "Show normal mode keypresses at the bottom of the screen"
 set confirm         "Dialog asking to confirm things instead of erroring"
@@ -55,6 +56,8 @@ set directory=~/.vim/tmp//
 noremap <C-S> :update<CR>
 vnoremap <C-S> <C-C>:update<CR>
 inoremap <C-S> <C-O>:update<CR>
+"Automatically add braces!
+inoremap { {<CR><BS>}<Esc>ko
 "Spell Check Settings
 autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
 autocmd BufRead,BufNewFile *.txt setlocal spell spelllang=en_us
@@ -86,6 +89,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/powerline-fonts'
 Plugin 'ervandew/eclim'
 Plugin 'Rip-Rip/clang_complete'
+"Plugin 'SirVer/ultisnips'
+"Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'Shougo/neocomplete.vim'
@@ -138,6 +143,8 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+"Force overwrite of completefunc
+let g:neocomplete#force_overwrite_completefunc = 1
 " Enable heavy omni completion.
 "Neocomplete sources
 if !exists('g:neocomplete#sources#omni#functions')

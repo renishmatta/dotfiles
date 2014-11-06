@@ -75,6 +75,8 @@ augroup vimrc
     \|      silent loadview
     \|  endif
 augroup END
+"Template Settings
+au BufNewFile * silent! 0r ~/.vim/skeleton/template.%:e
 
 "Vundle Settings
 "set the runtime path to include Vundle and initialize

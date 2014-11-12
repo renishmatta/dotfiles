@@ -104,7 +104,7 @@ Plugin 'Shougo/neosnippet-snippets'
 Plugin 'Shougo/vimproc.vim'
 call vundle#end()
 filetype plugin indent on
-"NeoCokplete Settings
+"NeoComplete Settings
 "Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 " Use neocomplete.

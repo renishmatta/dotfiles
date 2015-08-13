@@ -1,4 +1,7 @@
-"Miscellaneous Settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                       Miscellaneous Settings                                 "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set nocompatible    "Need to set nocompatible for the cool tricks in vim to work
 filetype off        "Need for vundle to work
 set showcmd         "Shows what you are typing out as a command
@@ -11,7 +14,7 @@ colorscheme ir_black  "Set color scheme
 set hlsearch
 hi Search cterm=NONE ctermfg=grey ctermbg=blue
 set ruler           "Show the line and column number of the cursor position,
-                    "separated by a comma.
+                "separated by a comma.
 set showmatch       "Shows the matching bracket that is on the cursor
 set cryptmethod=blowfish "Uses a better encryption method than the default
 "Tab Settings
@@ -27,8 +30,11 @@ set ignorecase      "This ignores case when searching for something
 set smartcase       "Searches FOR case if case sensitive query is made
 set incsearch       "Searches while you type!
 set textwidth=79    "Maximum width of text that is being inserted. A longer
-                    "line will be broken after white space to get this width
-                    
+                "line will be broken after white space to get this width
+"Set tab space to 2 for scheme files
+au FileType scheme setl sw=2 sts=2 et
+au FileType python setl sw=2 sts=2 et
+                
 "Color Column Settings
 hi ColorColumn  cterm=NONE ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100)
@@ -59,26 +65,30 @@ inoremap <C-S> <C-O>:update<CR>
 "Automatically add braces!
 inoremap { {<CR><BS>}<Esc>ko
 "Spell Check Settings
-autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
-autocmd BufRead,BufNewFile *.txt setlocal spell spelllang=en_us
+"autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
+"autocmd BufRead,BufNewFile *.txt setlocal spell spelllang=en_us
 autocmd BufRead,BufNewFile *.pdf setlocal spell spelllang=en_us
 "View Settings
 "save view + load view automatically
 set viewoptions-=options
 augroup vimrc
-    autocmd BufWritePost *
-    \   if expand('%') != '' && &buftype !~ 'nofile'
-    \|      mkview
-    \|  endif
-    autocmd BufRead *
-    \   if expand('%') != '' && &buftype !~ 'nofile'
-    \|      silent loadview
-    \|  endif
+autocmd BufWritePost *
+\   if expand('%') != '' && &buftype !~ 'nofile'
+\|      mkview
+\|  endif
+autocmd BufRead *
+\   if expand('%') != '' && &buftype !~ 'nofile'
+\|      silent loadview
+\|  endif
 augroup END
 "Template Settings
 au BufNewFile * silent! 0r ~/.vim/skeleton/template.%:e
 
-"Vundle Settings
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                       Vundle Settings                                        "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 "set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -94,17 +104,27 @@ Plugin 'Rip-Rip/clang_complete'
 "Plugin 'SirVer/ultisnips'
 "Plugin 'Raimondi/delimitMate'
 "Plugin 'ujihisa/neco-look'  "autocomplete english words
+Plugin 'vim-scripts/HTML-AutoCloseTag'
+Plugin 'wlangstroth/vim-racket'
 Plugin 'osyo-manga/vim-marching'
 Plugin 'mbbill/undotree'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
+Plugin 'gerw/vim-latex-suite'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/neosnippet'
 Plugin 'Shougo/neosnippet-snippets'
 Plugin 'Shougo/vimproc.vim'
+"for web dev:
+Plugin 'skammer/vim-css-color'
+Plugin 'mattn/emmet-vim'
 call vundle#end()
 filetype plugin indent on
-"NeoComplete Settings
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                      NeoComplete Settings                                    "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 "Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 " Use neocomplete.
@@ -116,13 +136,13 @@ let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
+\ 'default' : '',
+\ 'vimshell' : $HOME.'/.vimshell_hist',
+\ 'scheme' : $HOME.'/.gosh_completions'
+    \ }
 " Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
+let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 " Plugin key-mappings.
@@ -132,9 +152,9 @@ inoremap <expr><C-l>     neocomplete#complete_common_string()
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-  return neocomplete#close_popup() . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+return neocomplete#close_popup() . "\<CR>"
+" For no inserting <CR> key.
+"return pumvisible() ? neocomplete#close_popup() : "\<CR>"
 endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -154,13 +174,13 @@ let g:neocomplete#force_overwrite_completefunc = 1
 " Enable heavy omni completion.
 "Neocomplete sources
 if !exists('g:neocomplete#sources#omni#functions')
-    let g:neocomplete#sources#omni#functions = {}
+let g:neocomplete#sources#omni#functions = {}
 endif
 if !exists('g:neocomplete#sources#omni#input_patterns')
-    let g:neocomplete#sources#omni#input_patterns = {}
+let g:neocomplete#sources#omni#input_patterns = {}
 endif
 if !exists('g:neocomplete#force_omni_input_patterns')
-    let g:neocomplete#force_omni_input_patterns = {}
+let g:neocomplete#force_omni_input_patterns = {}
 endif
 " Java
 let g:EclimCompletionMethod = 'omnifunc'
@@ -184,13 +204,21 @@ let g:clang_auto_select = 0
 hi Pmenu ctermbg=8
 hi PmenuSel ctermbg=1
 hi PmenuSbar ctermbg=0
-"Vim-airline Settings
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                      Vim-airline Settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 let g:airline_inactive_collapse = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1    "display current buffers
 let g:airline_theme = "murmur"
 set laststatus=2
-"NERDTree Settings
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                       NERDTree Settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 let g:NERDTreeDirArrows=0
 map <C-t> :NERDTreeToggle<CR>
 "Tagbar Settings
@@ -200,7 +228,11 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
-"Neosnippet Settings
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                       Neosnippet Settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
@@ -215,5 +247,59 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
-"Vim-Marching Settings
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                       Vim-Marching Settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 let g:marching_enable_neocomplete = 1
+"Vimlatex Suite Settings
+" IMPORTANT: grep will sometimes skip displaying the file name if you
+" search in a singe file. This will confuse Latex-Suite. Set your grep
+" program to always generate a file-name.
+set grepprg=grep\ -nH\ $*
+"OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+"'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+"The following changes the default filetype back to 'tex':
+let g:tex_flavor='latex'
+
+"Shortcuts for buffers
+" This allows buffers to be hidden if you've modified a buffer.
+" This is almost a must if you wish to use buffers in this way.
+set hidden
+let mapleader=","
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                       Buffer Settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" To open a new empty buffer
+" This replaces :tabnew which I used to bind to this mapping
+nmap <Leader>t :enew<cr>
+
+" Move to the next buffer
+nmap <Leader>l :bnext<CR>
+
+" Move to the previous buffer
+nmap <Leader>h :bprevious<CR>
+
+" Close the current buffer and move to the previous one
+" This replicates the idea of closing a tab
+nmap <Leader>bq :bp <BAR> bd #<CR>
+
+" Show all open buffers and their status
+nmap <Leader>bl :ls<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                       Emmet Settings                                              
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                       Vim-CSS-Color Settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:cssColorVimDoNotMessMyUpdatetime = 1

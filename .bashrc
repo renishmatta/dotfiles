@@ -17,8 +17,13 @@ alias ls='ls --color=auto'
 # Displays a fortune in cowsay using a random cow
 # $HOME/randomcow
 
+# Get git completion to work:
+. $HOME/dotfiles/git-completion.bash
+. $HOME/dotfiles/git-prompt.sh
+
 # Change the PS1
-export PS1='[\u@\h \w]\n\$ '
+#export PS1='\n[\u@\h \w]\n\$ '
+export PS1='\n[\u@\h \w\e[0;35m$(__git_ps1 " (%s)")\e[m]\n\$ '
 
 #run razor mouse configurations:
 #$HOME/.mouse-options
@@ -48,12 +53,14 @@ mesg y
 
 #Make it so that we can use ctrl+s in vim
 # No ttyctl, so we need to save and then restore terminal settings
-vim()
-{
-    # osx users, use stty -g
-    local STTYOPTS="$(stty --save)"
-    stty stop '' -ixoff
-    command vim "$@"
-    stty "$STTYOPTS"
-}
+#vim()
+#{
+#    # osx users, use stty -g
+#    local STTYOPTS="$(stty --save)"
+#    stty stop '' -ixoff
+#    command vim "$@"
+#    stty "$STTYOPTS"
+#}
+
+#alias vim="vim --servername VIM"
 

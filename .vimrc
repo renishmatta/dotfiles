@@ -22,7 +22,7 @@ set tabstop=4       "Changes number of spaces used for tabbing
 set shiftwidth=4    "Changes number of spaces used for indentation
 set expandtab       "Uses space characters when indenting"
 set autoindent      "Indents next line similarily as the current one"
-set smarttab        "Deletes # of spaces for a tab when using backspace 
+set smarttab        "Deletes # of spaces for a tab when using backspace
 set smartindent     "Automatically inserts one extra level of indentation"
 set showcmd         "Show normal mode keypresses at the bottom of the screen"
 set confirm         "Dialog asking to confirm things instead of erroring"
@@ -31,10 +31,26 @@ set smartcase       "Searches FOR case if case sensitive query is made
 set incsearch       "Searches while you type!
 set textwidth=79    "Maximum width of text that is being inserted. A longer
                 "line will be broken after white space to get this width
+set encoding=utf-8
+set scrolloff=3
+set showmode
+set hidden
+set wildmenu
+set wildmode=list:longest
+set visualbell
+set cursorline
+set ttyfast
+set ruler
+set backspace=indent,eol,start
+set laststatus=2
+"Shows # of lines your cursor is away from other lines
+"set relativenumber
+set undofile
+
 "Set tab space to 2 for scheme files
 au FileType scheme setl sw=2 sts=2 et
 au FileType python setl sw=2 sts=2 et
-                
+
 "Color Column Settings
 hi ColorColumn  cterm=NONE ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100)
@@ -53,7 +69,7 @@ set splitright
 set splitbelow
 "Backup Settings
 set noswapfile      "NO MORE SWAP FILES!! BWHAHAHA
-set backup          "Setup backup 
+set backup          "Setup backup
 "backup locations: make sure they exist!
 set backupdir=~/.vim/backup//
 set directory=~/.vim/tmp//
@@ -84,6 +100,11 @@ augroup END
 "Template Settings
 au BufNewFile * silent! 0r ~/.vim/skeleton/template.%:e
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                       Highlighting Settings                                   "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:python_highlight_all = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                       Vundle Settings                                        "
@@ -138,6 +159,9 @@ Plugin 'marijnh/tern_for_vim'
 Plugin 'moll/vim-node'
 Plugin 'syngan/vim-vimlint'
 Plugin 'ynkdir/vim-vimlparser'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'jcfaria/Vim-R-plugin'
+Plugin 'jalvesaq/VimCom.git'
 call vundle#end()
 filetype plugin indent on
 
@@ -312,7 +336,8 @@ nmap <Leader>bq :bp <BAR> bd #<CR>
 nmap <Leader>bl :ls<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                       Emmet Settings                                              
+"                       Emmet Settings
+"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:user_emmet_install_global = 0

@@ -11,10 +11,16 @@ else
     PKGM="apt-get"
 fi
 
-#TODO: Make sure the computer has an online connection before starting the
-# script
+printf "> Checking if we are online...\n"
+wget -q --tries=10 --timeout=20 --spider http://google.com
+if [[ $? -eq 0 ]]; then
+    echo "We're Online!"
+else
+    echo "We're Offline :(.  Stopping script"
+    exit 1
+fi
 
-printf "> Initial Setup:\n"
+printf "\n> Initial Setup:\n"
 while : ; do
     printf ">> Please enter the desired ssh key password\n:"
     read SSHPASS
@@ -94,8 +100,11 @@ printf ">>> Backup configs are stored in ~/backup-configs\n"
 
 # Install all required packages
 printf "\n>> Installing packages...\n"
-sudo $PKGM -y install git vim brasero flash flash-plugin xclip gnome-tweak-tool\
-    gtk-unico-engine gtk-murrine-engine google-chrome wget R
+sudo $PKGM -y install git vim brasero flash flash-plugin xclip google-chrome \
+    wget R
+if [ "$DESKTOP_SESSION" == "gnome" ]; then
+    sudo $PKGM -y install gnome-tweak-tool gtk-unico-engine gtk-murrine-engine
+fi
 
 printf ">> Creating vim directories...\n"
 mkdir -p ~/.vim/bundle
@@ -108,7 +117,9 @@ mkdir -p ~/.vim/skeleton
 printf "\n>> Setting up vim plugins...\n"
 vim +PluginInstall +qall
 mv ~/.vim/bundle/ir_black/colors/* ~/.vim/colors/
-# TODO: setup fonts for vim airline
+
+printf "\n>> Setting up vim airline fonts...\n"
+source ~/.vim/bundle/powerline-fonts/install.sh
 
 printf "\n>> Setting up ssh...\n"
 #mkdir -p ~/.ssh/key_backup && mv ~/.ssh/id_rsa* ~/.ssh/key_backup
@@ -141,8 +152,12 @@ cd !$
     git clone git@github.com:rematta/Rutgers.git
 cd
 
+printf "\n> Turning off selinux...(you will need to enter sudo password)\n"
+sudo echo 0 >/selinux/enforce
+
 #printf "\n>> Setting up jetbrains apps...\n"
 #printf "\n>> Setting up sublime...\n"
 
 printf "\nDONE!  Now, get to work champ"
+printf "\nMake sure to reboot the machine for the powerline-fonts to work in vim as well as change your font to a powerline font in the terminal"
 

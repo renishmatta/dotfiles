@@ -18,8 +18,10 @@ set ruler           "Show the line and column number of the cursor position,
 set showmatch       "Shows the matching bracket that is on the cursor
 set cryptmethod=blowfish "Uses a better encryption method than the default
 "Tab Settings
-set tabstop=4       "Changes number of spaces used for tabbing
-set shiftwidth=4    "Changes number of spaces used for indentation
+"set tabstop=4       "Changes number of spaces used for tabbing
+"set shiftwidth=4    "Changes number of spaces used for indentation
+set tabstop=2       "Changes number of spaces used for tabbing
+set shiftwidth=2    "Changes number of spaces used for indentation
 set expandtab       "Uses space characters when indenting"
 set autoindent      "Indents next line similarily as the current one"
 set smarttab        "Deletes # of spaces for a tab when using backspace

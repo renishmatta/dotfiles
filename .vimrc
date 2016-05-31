@@ -122,7 +122,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/powerline-fonts'
-Plugin 'ervandew/eclim'
+"Plugin 'ervandew/eclim'
 Plugin 'Rip-Rip/clang_complete'
 "Plugin 'SirVer/ultisnips'
 "Plugin 'Raimondi/delimitMate'
@@ -164,6 +164,7 @@ Plugin 'ynkdir/vim-vimlparser'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'jcfaria/Vim-R-plugin'
 Plugin 'jalvesaq/VimCom.git'
+Plugin 'vim-airline/vim-airline-themes'
 call vundle#end()
 filetype plugin indent on
 

@@ -3,6 +3,9 @@
 HOSTNAME=$(hostname)
 # Source global definitions
 export TERM="xterm-256color"
+export PATH="$HOME/.linuxbrew/bin:$PATH"
+export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
@@ -63,4 +66,10 @@ mesg y
 #}
 
 #alias vim="vim --servername VIM"
+
+#git aliases
+alias ga="git add"
+alias gs="git status"
+alias gc="git commit"
+alias gb="git branch"
 

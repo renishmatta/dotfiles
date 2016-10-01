@@ -35,6 +35,7 @@ set textwidth=79    "Maximum width of text that is being inserted. A longer
                 "line will be broken after white space to get this width
 set encoding=utf-8
 set scrolloff=3
+set mouse=a         "Allow mouse use in files opened by vim
 set showmode
 set hidden
 set wildmenu
@@ -230,12 +231,12 @@ if !exists('g:neocomplete#force_omni_input_patterns')
 let g:neocomplete#force_omni_input_patterns = {}
 endif
 " Java
-let g:EclimCompletionMethod = 'omnifunc'
-let g:neocomplete#force_omni_input_patterns.java =
-\ '\%(\h\w*\|)\)\.\w*'
-let g:EclimLoggingDisabled = 1
-let g:EclimTempFilesEnable = 0
-nnoremap <silent> <leader>o :JavaImportOrganize<cr>
+"let g:EclimCompletionMethod = 'omnifunc'
+"let g:neocomplete#force_omni_input_patterns.java =
+"\ '\%(\h\w*\|)\)\.\w*'
+"let g:EclimLoggingDisabled = 1
+"let g:EclimTempFilesEnable = 0
+"nnoremap <silent> <leader>o :JavaImportOrganize<cr>
 " C & C++
 let g:neocomplete#force_omni_input_patterns.c =
 \ '[^.[:digit:] *\t]\%(\.\|->\)\w*'

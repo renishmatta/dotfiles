@@ -159,5 +159,6 @@ sudo echo 0 >/selinux/enforce
 #printf "\n>> Setting up sublime...\n"
 
 printf "\nDONE!  Now, get to work champ"
+printf "\nBackup configs are stored in ~/backup-configs\n"
 printf "\nMake sure to reboot the machine for the powerline-fonts to work in vim as well as change your font to a powerline font in the terminal"
 

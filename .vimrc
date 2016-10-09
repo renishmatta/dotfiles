@@ -8,7 +8,8 @@ set showcmd         "Shows what you are typing out as a command
 syntax on           "Allows for syntax highlighting
 syntax enable
 set number
-colorscheme ir_black  "Set color scheme
+"colorscheme ir_black  "Set color scheme
+colorscheme desert  "Set color scheme
 "hi Normal ctermfg=252 ctermbg=NONE
 "Set highlighting full search term on + change highlighting color to light blue
 set hlsearch
@@ -87,6 +88,7 @@ inoremap { {<CR><BS>}<Esc>ko
 "autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
 "autocmd BufRead,BufNewFile *.txt setlocal spell spelllang=en_us
 autocmd BufRead,BufNewFile *.pdf setlocal spell spelllang=en_us
+au BufRead,BufNewFile *.go set filetype=go
 "View Settings
 "save view + load view automatically
 set viewoptions-=options
@@ -140,6 +142,7 @@ Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/neosnippet'
 Plugin 'Shougo/neosnippet-snippets'
 Plugin 'Shougo/vimproc.vim'
+Plugin 'fatih/vim-go'
 "for web dev:
 Plugin 'skammer/vim-css-color'
 Plugin 'mattn/emmet-vim'
@@ -384,6 +387,8 @@ let g:syntastic_scss_checkers=['scss-lint']
 let g:syntastic_css_checkers=['csslint']
 let g:syntastic_handlebars_checkers=['handlebars']
 let g:syntastic_tpl_checkers=['handlebars']
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 " get available js linters
 function! GetJslinters()
@@ -477,4 +482,15 @@ nmap <leader>P <Plug>yankstack_substitute_newer_paste
 " [> Javascript libraries syntax <]
 
 let g:used_javascript_libs = 'jquery,underscore,requirejs,chai,handlebars'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                            vim-go                                            "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_command = "goimports"
 

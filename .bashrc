@@ -6,6 +6,8 @@ export TERM="xterm-256color"
 export PATH="$HOME/.linuxbrew/bin:$PATH"
 export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
 export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
@@ -69,7 +71,12 @@ mesg y
 
 #git aliases
 alias ga="git add"
+alias gr="git remove"
 alias gs="git status"
 alias gc="git commit"
 alias gb="git branch"
-
+alias gpu="git push"
+alias gpl="git pull"
+alias gpuom="git push origin master"
+alias gplom="git pull origin master"
+alias sl="ls"

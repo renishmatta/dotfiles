@@ -33,7 +33,7 @@ set confirm         "Dialog asking to confirm things instead of erroring"
 set ignorecase      "This ignores case when searching for something
 set smartcase       "Searches FOR case if case sensitive query is made
 set incsearch       "Searches while you type!
-set textwidth=79    "Maximum width of text that is being inserted. A longer
+"set textwidth=79    "Maximum width of text that is being inserted. A longer
                 "line will be broken after white space to get this width
 set encoding=utf-8
 set scrolloff=3
@@ -150,7 +150,7 @@ Plugin 'Shougo/neocomplete.vim'
 "Plugin 'goatslacker/mango.vim'
 Plugin 'airblade/vim-gitgutter'
 "Plugin 'editorconfig/editorconfig-vim'
-Plugin 'bronson/vim-trailing-whitespace'
+"Plugin 'bronson/vim-trailing-whitespace'
 "Plugin 'junegunn/vim-easy-align'
 "Plugin 'terryma/vim-multiple-cursors'
 "Plugin 'maksimr/vim-jsbeautify'

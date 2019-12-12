@@ -98,3 +98,6 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 #fi
 #unset __conda_setup
 # <<< conda init <<<
+
+export HISTTIMEFORMAT='%d/%m/%y %T :'
+

@@ -21,25 +21,25 @@ else
 fi
 
 printf "\n> Initial Setup:\n"
-while : ; do
-    printf ">> Please enter the desired ssh key password\n:"
-    read SSHPASS
-    printf ">>> Your password is $SSHPASS , Is this correct?(y/n)\n:"
-    read ANS
-    [[ "$ANS" == "y" ]] || break
-done
-
-while : ; do
-    printf "\n>> Please enter the desired ssh key email\n:"
-    read SSHEMAIL
-    if [[ "$SSHEMAIL" != *"@"* || "$SSHEMAIL" == "" ]]; then
-        printf ">>> Not a valid email!\n"
-        continue
-    fi
-    printf ">>> Your email is $SSHEMAIL , Is this correct?(y/n)\n:"
-    read ANS
-    [[ "$ANS" == "y" ]] || break
-done
+#while : ; do
+#    printf ">> Please enter the desired ssh key password\n:"
+#    read SSHPASS
+#    printf ">>> Your password is $SSHPASS , Is this correct?(y/n)\n:"
+#    read ANS
+#    [[ "$ANS" == "y" ]] || break
+#done
+#
+#while : ; do
+#    printf "\n>> Please enter the desired ssh key email\n:"
+#    read SSHEMAIL
+#    if [[ "$SSHEMAIL" != *"@"* || "$SSHEMAIL" == "" ]]; then
+#        printf ">>> Not a valid email!\n"
+#        continue
+#    fi
+#    printf ">>> Your email is $SSHEMAIL , Is this correct?(y/n)\n:"
+#    read ANS
+#    [[ "$ANS" == "y" ]] || break
+#done
 
 while : ; do
     printf ">> Please enter the your github username\n:"
@@ -123,26 +123,26 @@ source ~/.vim/bundle/powerline-fonts/install.sh
 
 printf "\n>> Setting up ssh...\n"
 #mkdir -p ~/.ssh/key_backup && mv ~/.ssh/id_rsa* ~/.ssh/key_backup
-if [ ! -f ~/.ssh/id_rsa ]; then
-    printf ">>> Creating ssh keys...\n"
-    echo -e "\n\n\n" | ssh-keygen -t rsa -b 4096 -N "$SSHPASS" \
-        -f "~/.ssh/id_rsa" -q -C "$SSHEMAIL"
-    printf ">>> Starting ssh-agent...\n"
-    eval "$(ssh-agent -s)"
-    printf ">>> Adding ssh-key to ssh-agent to manage...\n"
-    ssh-add ~/.ssh/id_rsa
-fi
+#if [ ! -f ~/.ssh/id_rsa ]; then
+#    printf ">>> Creating ssh keys...\n"
+#    echo -e "\n\n\n" | ssh-keygen -t rsa -b 4096 -N "$SSHPASS" \
+#        -f "~/.ssh/id_rsa" -q -C "$SSHEMAIL"
+#    printf ">>> Starting ssh-agent...\n"
+#    eval "$(ssh-agent -s)"
+#    printf ">>> Adding ssh-key to ssh-agent to manage...\n"
+#    ssh-add ~/.ssh/id_rsa
+#fi
 
-printf "\n>> Adding ssh key to github account...\n"
-#source: https://gist.github.com/ccashwell/4042214
-TOKEN=$(curl -u $GITNAME:$GITPASS --silent -d '{"scopes":["user"]}'\
-    "https://api.github.com/authorizations" | grep -o '[0-9A-Fa-f]\{40\}')
-SSHKEY=`cat ~/.ssh/id_rsa.pub`
-curl -X POST -H "Content-type: application/json" \
-    -d "{\"title\": \"$GITEMAIL\",\"key\": \"$SSHKEY\"}" \
-    "https://api.github.com/user/keys?access_token=$TOKEN"
-
-printf "\n>> Setting up gitconfig...\n"
+#printf "\n>> Adding ssh key to github account...\n"
+##source: https://gist.github.com/ccashwell/4042214
+#TOKEN=$(curl -u $GITNAME:$GITPASS --silent -d '{"scopes":["user"]}'\
+#    "https://api.github.com/authorizations" | grep -o '[0-9A-Fa-f]\{40\}')
+#SSHKEY=`cat ~/.ssh/id_rsa.pub`
+#curl -X POST -H "Content-type: application/json" \
+#    -d "{\"title\": \"$GITEMAIL\",\"key\": \"$SSHKEY\"}" \
+#    "https://api.github.com/user/keys?access_token=$TOKEN"
+#
+#printf "\n>> Setting up gitconfig...\n"
 git config --global user.name "$GITNAME"
 git config --global user.email $GITEMAIL
 
@@ -152,8 +152,8 @@ cd !$
     git clone git@github.com:rematta/Rutgers.git
 cd
 
-printf "\n> Turning off selinux...(you will need to enter sudo password)\n"
-sudo echo 0 >/selinux/enforce
+#printf "\n> Turning off selinux...(you will need to enter sudo password)\n"
+#sudo echo 0 >/selinux/enforce
 
 #printf "\n>> Setting up jetbrains apps...\n"
 #printf "\n>> Setting up sublime...\n"

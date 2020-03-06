@@ -74,6 +74,10 @@ alias gpuom="git push origin master"
 alias gplom="git pull origin master"
 alias sl="ls"
 alias up='cd ../'
+alias d="ls -halt"
+alias pythone='python'
+alias pythone3='python3'
+alias p3="python3"
 
 source /opt/ros/melodic/setup.bash
 #source ~/Documents/Gatech/MM/catkin_ws/devel/setup.bash
@@ -100,4 +104,10 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 # <<< conda init <<<
 
 export HISTTIMEFORMAT='%d/%m/%y %T :'
+
+
+# Disables Software Flow Control feature which freezes vim when pressing ctrl+s
+# refs: https://unix.stackexchange.com/questions/72086/ctrl-s-hang-terminal-emulator
+#       https://superuser.com/questions/721544/vim-crashing-when-pressing-ctrl-s-in-terminal/721548
+stty -ixon
 

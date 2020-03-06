@@ -1,3 +1,5 @@
+" If you accidently press ctrl+z, type fg in the command line.  ref: https://github.com/yuanqing/vim-basics/blob/master/README.md#the-ctrl--z-problem
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                       Miscellaneous Settings                                 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -8,6 +10,7 @@ syntax on           "Allows for syntax highlighting
 syntax enable
 set number
 colorscheme molokai  "Set color scheme
+
 "hi Normal ctermfg=252 ctermbg=NONE
 "Set highlighting full search term on + change highlighting color to light blue
 set hlsearch
@@ -119,13 +122,14 @@ Plugin 'majutsushi/tagbar'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Lokaltog/powerline-fonts'
-Plugin 'scrooloose/syntastic'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'osyo-manga/vim-marching'  "async clang code completion
 Plugin 'airblade/vim-gitgutter'
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'roxma/nvim-yarp'          " for deoplete.nvim
 Plugin 'roxma/vim-hug-neovim-rpc'       " for deoplete.nvim
+Plugin 'dense-analysis/ale'       " general async linter.  replacement for syntastic
+"  Plugin 'scrooloose/syntastic'
 "Plugin 'Shougo/neocomplete.vim'
 "Plugin 'twerth/ir_black'
 "Plugin 'elzr/vim-json'
@@ -199,6 +203,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1    "display current buffers
 let g:airline_theme = "murmur"
 set laststatus=2
+let g:airline#extensions#whitespace#enabled = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                       Vim-Marching Settings
@@ -232,9 +237,20 @@ map <C-x> :TagbarToggle<CR>
 "                      Deoplete Settings                                    "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:deoplete#enable_at_startup = 1
+" deoplete tab-complete
+" ref: https://gregjs.com/vim/2016/configuring-the-deoplete-asynchronous-keyword-completion-plugin-with-tern-for-vim/
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                       Polyglot Settings                                   "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:python_highlight_all = 1
+"let g:python_highlight_all = 1   " NOTE: this causes whitespaces to be
+"highlighted, which is pretty irritating
+let g:go_highlight_chan_whitespace_error = 0
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                       Ale Settings                                   "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ale_sign_column_always = 1
+let g:airline#extensions#ale#enabled = 1
 
